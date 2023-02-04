@@ -12,3 +12,10 @@ lis.forEach((li) => {
     e.currentTarget.classList.add("active");
   });
 });
+
+// Sticky Navigation Bar On Scroll
+
+window.addEventListener("scroll", _ => {
+  let head = document.querySelector(".head");
+    head.classList.toggle("sticky",window.scrollY > 250);
+})

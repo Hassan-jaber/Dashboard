@@ -1,17 +1,23 @@
 let lis = document.querySelectorAll("ul li");
 
 lis.forEach((li) => {
-      if (li.childNodes[1].childNodes[3].textContent === "Dashboard") {
-        li.className = "active";
-      }
     li.addEventListener("click", (e) => {
-      e.preventDefault()
-      lis.forEach((li) => {
-            li.classList.remove("active");
+      let val = e.currentTarget.childNodes[1].childNodes[3].textContent;
+      sessionStorage.setItem("current", val);
+    });
+  window.onload = _ => {
+    lis.forEach((li) => { 
+          if (
+            li.childNodes[1].childNodes[3].textContent ===
+            sessionStorage.getItem("current")
+          ) {
+            li.className = "active";
+          }
     })
-    e.currentTarget.classList.add("active");
+
+  };
+
   });
-});
 
 // Sticky Navigation Bar On Scroll
 
@@ -19,3 +25,15 @@ window.addEventListener("scroll", _ => {
   let head = document.querySelector(".head");
     head.classList.toggle("sticky",window.scrollY > 250);
 })
+
+// Start Script For Settings Page
+let plans = document.querySelectorAll(".plans div")
+plans.forEach((div) => {
+  div.addEventListener("click", e => {
+    plans.forEach((div) => {
+      div.classList.remove("active-plane");
+    })
+    e.currentTarget.classList.add("active-plane");
+  })
+})
+// End Script For Settings Page

@@ -6,6 +6,7 @@ lis.forEach((li) => {
       sessionStorage.setItem("current", val);
     });
   window.onload = _ => {
+
     lis.forEach((li) => { 
           if (
             li.childNodes[1].childNodes[3].textContent ===
